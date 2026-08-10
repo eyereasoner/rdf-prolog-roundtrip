@@ -1,0 +1,3 @@
+VERSION "1.2"
+
+<https://example.org/bob> <https://example.org/knows> <https://example.org/carol> .

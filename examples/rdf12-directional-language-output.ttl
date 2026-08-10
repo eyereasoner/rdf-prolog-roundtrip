@@ -1,0 +1,4 @@
+VERSION "1.2"
+
+<https://example.org/welcome> <https://example.org/displayLabel> "مرحبا"@ar--rtl .
+<https://example.org/welcome> <https://example.org/displayLabel> "Welcome"@en--ltr .

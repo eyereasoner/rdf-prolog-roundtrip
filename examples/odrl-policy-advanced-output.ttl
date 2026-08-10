@@ -1,0 +1,8 @@
+VERSION "1.2"
+
+<https://example.org/result/research_use> <https://example.org/decision> <https://example.org/permit> .
+<https://example.org/result/commercial_use> <https://example.org/decision> <https://example.org/deny> .
+<https://example.org/result/dataset_transfer> <https://example.org/decision> <https://example.org/deny> .
+<https://example.org/result/research_use> <https://example.org/duty> <https://example.org/deidentify> .
+<https://example.org/result/commercial_use> <https://example.org/reason> <https://example.org/purpose_mismatch> .
+<https://example.org/result/dataset_transfer> <https://example.org/reason> <https://example.org/prohibited> .

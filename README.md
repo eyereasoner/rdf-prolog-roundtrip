@@ -1,0 +1,144 @@
+# rdf-prolog-roundtrip
+
+Standalone RDF 1.2 <-> ISO Prolog roundtripping toolkit. It converts RDF datasets
+to ordinary `rdf/4` Prolog facts and ground `rdf/4` facts back to RDF.
+The package contains no Prolog solver.
+
+## Install
+
+```sh
+npm install
+```
+
+Node.js 18+ is required. N-Quads/N-Triples use the built-in parser. `rdf-parse`
+is an optional dependency for Turtle, TriG, JSON-LD, RDF/XML, RDFa, and other
+RDF syntaxes.
+
+## Basic roundtrip
+
+```sh
+rdf-to-prolog data.ttl -o data.pl
+prolog-to-rdf data.pl -o roundtripped.ttl
+```
+
+The Prolog representation is:
+
+```prolog
+rdf(Subject, Predicate, Object, Graph).
+```
+
+`prolog-to-rdf` infers its output syntax from `.nq`, `.ttl`, or `.trig` (or use
+`--format nq|ttl|trig`).
+
+## Examples
+
+`examples/` contains 14 flat, complete examples. Every example has exactly the
+same five-file shape:
+
+```text
+examples/<name>-input.ttl|trig
+examples/<name>-input.pl
+examples/<name>-rules.pl
+examples/<name>-output.pl
+examples/<name>-output.ttl|trig
+```
+
+The meaning is literal:
+
+```text
+RDF input
+   | rdf-to-prolog
+   v
+<name>-input.pl
+   + <name>-rules.pl       (ISO Prolog)
+   | query result_rdf/4
+   v
+<name>-output.pl           (ground rdf/4 test results)
+   | prolog-to-rdf
+   v
+RDF output
+```
+
+All rule files expose:
+
+```prolog
+result_rdf(S, P, O, G).
+write_results.
+```
+
+`result_rdf/4` is the test query. `write_results/0` prints all its solutions as
+ground `rdf/4` facts, which is exactly the format accepted by `prolog-to-rdf`.
+See [`examples/README.md`](examples/README.md) for a concrete trust-flow run.
+
+## CLI
+
+RDF -> Prolog:
+
+```sh
+rdf-to-prolog [options] input
+```
+
+```text
+--format TYPE      input media type/extension when needed
+--base IRI         base IRI for relative references
+--rules FILE       append a rule file (optional convenience)
+--include-source   store input as source_rdf/4 and bridge it through rdf/4
+--scope NAME       blank-node scope
+-o, --output FILE  output file
+```
+
+Prolog -> RDF:
+
+```sh
+prolog-to-rdf [options] facts.pl
+```
+
+```text
+--format nq|ttl|trig  RDF output syntax; otherwise inferred from -o
+-o, --output FILE     output file
+```
+
+`prolog-to-rdf` does not execute rules. A Prolog engine first materializes the
+rule result as ground `rdf/4` facts; the checked-in `*-output.pl` files show
+exactly what that means.
+
+Aliases `rdf-to-pl` and `pl-to-rdf` are also provided.
+
+## JavaScript API
+
+```js
+import {
+  compileRdfDocumentToProlog,
+  compileRdfToProlog,
+  extractRdfFromProlog,
+  serializeRdfFromProlog,
+} from 'rdf-prolog-roundtrip';
+
+const facts = compileRdfToProlog(nquads);
+const nquadsAgain = extractRdfFromProlog(facts);
+const turtle = serializeRdfFromProlog(facts, { format: 'ttl' });
+```
+
+## Term mapping
+
+| RDF value | Prolog term |
+| --- | --- |
+| IRI | `iri(Value)` |
+| Blank node | `bnode(Scope, Label)` |
+| Typed literal | `literal(Value, datatype(IRI))` |
+| Language string | `literal(Value, lang(Language))` |
+| Directional language string | `literal(Value, lang(Language, ltr))` / `lang(Language, rtl)` |
+| RDF 1.2 triple term | `triple(Subject, Predicate, Object)` |
+| Default graph | `default_graph` |
+
+## Tests
+
+```sh
+npm test
+```
+
+The example test discovers all 14 names from the flat directory, verifies the
+five-file contract, roundtrips every checked-in input/output Prolog dataset,
+and verifies that every `*-output.ttl|trig` is exactly the `prolog-to-rdf`
+serialization of its matching `*-output.pl`. When `rdf-parse` is installed it
+also regenerates each `*-input.pl` from the original Turtle/TriG source.

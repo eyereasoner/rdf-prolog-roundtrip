@@ -1,0 +1,36 @@
+{
+  "name": "rdf-prolog-roundtrip",
+  "version": "0.1.0",
+  "description": "Standalone RDF 1.2 <-> ISO Prolog roundtripping toolkit.",
+  "type": "module",
+  "main": "./src/index.mjs",
+  "exports": "./src/index.mjs",
+  "bin": {
+    "rdf-to-prolog": "./bin/rdf-to-prolog.js",
+    "prolog-to-rdf": "./bin/prolog-to-rdf.js",
+    "rdf-to-pl": "./bin/rdf-to-prolog.js",
+    "pl-to-rdf": "./bin/prolog-to-rdf.js"
+  },
+  "files": [
+    "LICENSE.md",
+    "README.md",
+    "EXTRACTION.md",
+    "bin",
+    "src",
+    "examples",
+    "test"
+  ],
+  "scripts": {
+    "test": "node test/run.mjs && node test/examples-roundtrip.mjs",
+    "test:core": "node test/run.mjs",
+    "test:examples": "node test/examples-roundtrip.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "author": "Jos De Roo / extracted adapter packaging",
+  "optionalDependencies": {
+    "rdf-parse": "^5.0.0"
+  }
+}

@@ -1,0 +1,11 @@
+VERSION "1.2"
+
+<https://example.org/bridge> <https://example.org/decision> <https://example.org/avoid_bridge> .
+<https://example.org/bridge> <https://example.org/trustedSource> <https://example.org/transportAuthority> .
+<https://example.org/bridge> <https://example.org/score> "9310"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/closed> <https://example.org/rank> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/open> <https://example.org/rank> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/closed> <https://example.org/assertedBy> <https://example.org/transportAuthority> .
+<https://example.org/open> <https://example.org/assertedBy> <https://example.org/anonymousPost> .
+<https://example.org/closed> <https://example.org/score> "9310"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/open> <https://example.org/score> "700"^^<http://www.w3.org/2001/XMLSchema#integer> .

@@ -1,0 +1,11 @@
+VERSION "1.2"
+
+<https://example.org/flow-care> <https://example.org/decision> <https://example.org/permit> .
+<https://example.org/flow-clinic> <https://example.org/decision> <https://example.org/review> .
+<https://example.org/flow-ads> <https://example.org/decision> <https://example.org/deny> .
+<https://example.org/flow-care> <https://example.org/confidence> "0.92"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://example.org/flow-clinic> <https://example.org/confidence> "0.63"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://example.org/flow-care> <https://example.org/status> <https://example.org/executable_flow> .
+<https://example.org/flow-ads> <https://example.org/status> <https://example.org/blocked_flow> .
+<https://example.org/flow-clinic> <https://example.org/risk> <https://example.org/trustworthiness_risk> .
+<https://example.org/flow-ads> <https://example.org/risk> <https://example.org/unwanted_disclosure> .

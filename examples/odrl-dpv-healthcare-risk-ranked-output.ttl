@@ -1,0 +1,17 @@
+VERSION "1.2"
+
+<https://example.org/consent-risk> <https://example.org/rank> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/sharing-risk> <https://example.org/rank> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/retention-risk> <https://example.org/rank> "3"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/consent-risk> <https://example.org/score> "100"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/sharing-risk> <https://example.org/score> "100"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/retention-risk> <https://example.org/score> "70"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/consent-risk> <https://example.org/level> <https://example.org/high> .
+<https://example.org/sharing-risk> <https://example.org/level> <https://example.org/high> .
+<https://example.org/retention-risk> <https://example.org/level> <https://example.org/moderate> .
+<https://example.org/consent-risk> <https://example.org/clause> "h1" .
+<https://example.org/sharing-risk> <https://example.org/clause> "h2" .
+<https://example.org/retention-risk> <https://example.org/clause> "h4" .
+<https://example.org/consent-risk> <https://example.org/mitigation> <https://example.org/require-explicit-consent> .
+<https://example.org/sharing-risk> <https://example.org/mitigation> <https://example.org/require-deidentification> .
+<https://example.org/retention-risk> <https://example.org/mitigation> <https://example.org/limit-retention-to-1095-days> .

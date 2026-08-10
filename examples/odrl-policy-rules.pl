@@ -1,0 +1,65 @@
+% Read one deterministic decision from the ODRL policy graph.
+%% goal: result_rdf(_, _, _, _)
+
+odrl_policy_decision(permit(use, research, dataset)) :-
+  rdf(
+    iri('https://example.org/policy'),
+    iri('http://www.w3.org/ns/odrl/2/permission'),
+    Permission,
+    default_graph
+  ),
+  rdf(
+    Permission,
+    iri('http://www.w3.org/ns/odrl/2/target'),
+    iri('https://example.org/dataset'),
+    default_graph
+  ),
+  rdf(
+    Permission,
+    iri('http://www.w3.org/ns/odrl/2/action'),
+    iri('http://www.w3.org/ns/odrl/2/use'),
+    default_graph
+  ),
+  rdf(
+    Permission,
+    iri('http://www.w3.org/ns/odrl/2/constraint'),
+    Constraint,
+    default_graph
+  ),
+  rdf(
+    Constraint,
+    iri('http://www.w3.org/ns/odrl/2/leftOperand'),
+    iri('http://www.w3.org/ns/odrl/2/purpose'),
+    default_graph
+  ),
+  rdf(
+    Constraint,
+    iri('http://www.w3.org/ns/odrl/2/operator'),
+    iri('http://www.w3.org/ns/odrl/2/eq'),
+    default_graph
+  ),
+  rdf(
+    Constraint,
+    iri('http://www.w3.org/ns/odrl/2/rightOperand'),
+    iri('https://example.org/research'),
+    default_graph
+  ).
+
+% RDF form of the test result. Query result_rdf/4 after loading the input facts.
+result_rdf(iri('https://example.org/result'), iri('https://example.org/decision'), iri('https://example.org/permit'), default_graph) :-
+  odrl_policy_decision(permit(use, research, dataset)).
+result_rdf(iri('https://example.org/result'), iri('https://example.org/action'), iri('http://www.w3.org/ns/odrl/2/use'), default_graph) :-
+  odrl_policy_decision(permit(use, research, dataset)).
+result_rdf(iri('https://example.org/result'), iri('https://example.org/purpose'), iri('https://example.org/research'), default_graph) :-
+  odrl_policy_decision(permit(use, research, dataset)).
+result_rdf(iri('https://example.org/result'), iri('https://example.org/target'), iri('https://example.org/dataset'), default_graph) :-
+  odrl_policy_decision(permit(use, research, dataset)).
+
+% ISO Prolog helper: print the complete test result as rdf/4 facts.
+write_results :-
+  result_rdf(S, P, O, G),
+  write_term(rdf(S, P, O, G), [quoted(true)]),
+  write('.'),
+  nl,
+  fail.
+write_results.

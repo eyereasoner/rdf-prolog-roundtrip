@@ -1,0 +1,22 @@
+VERSION "1.2"
+
+<https://example.org/deletion-risk> <https://example.org/rank> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/sharing-risk> <https://example.org/rank> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/terms-risk> <https://example.org/rank> "3"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/portability-risk> <https://example.org/rank> "4"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/deletion-risk> <https://example.org/score> "100"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/sharing-risk> <https://example.org/score> "97"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/terms-risk> <https://example.org/score> "85"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/portability-risk> <https://example.org/score> "70"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://example.org/deletion-risk> <https://example.org/level> <https://example.org/high> .
+<https://example.org/sharing-risk> <https://example.org/level> <https://example.org/high> .
+<https://example.org/terms-risk> <https://example.org/level> <https://example.org/high> .
+<https://example.org/portability-risk> <https://example.org/level> <https://example.org/moderate> .
+<https://example.org/deletion-risk> <https://example.org/clause> "c1" .
+<https://example.org/sharing-risk> <https://example.org/clause> "c3" .
+<https://example.org/terms-risk> <https://example.org/clause> "c2" .
+<https://example.org/portability-risk> <https://example.org/clause> "c4" .
+<https://example.org/deletion-risk> <https://example.org/mitigation> <https://example.org/require-notice-before-deletion> .
+<https://example.org/sharing-risk> <https://example.org/mitigation> <https://example.org/require-explicit-consent> .
+<https://example.org/terms-risk> <https://example.org/mitigation> <https://example.org/require-14-days-notice> .
+<https://example.org/portability-risk> <https://example.org/mitigation> <https://example.org/permit-data-export> .

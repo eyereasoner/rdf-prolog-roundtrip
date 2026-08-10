@@ -1,0 +1,6 @@
+VERSION "1.2"
+
+<https://example.org/result> <https://example.org/decision> <https://example.org/permit> .
+<https://example.org/result> <https://example.org/action> <http://www.w3.org/ns/odrl/2/use> .
+<https://example.org/result> <https://example.org/purpose> <https://example.org/research> .
+<https://example.org/result> <https://example.org/target> <https://example.org/dataset> .

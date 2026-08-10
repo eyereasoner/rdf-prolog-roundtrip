@@ -1,0 +1,7 @@
+VERSION "1.2"
+
+<https://example.org/family> {
+  <https://example.org/alice> <https://example.org/ancestor> <https://example.org/bob> .
+  <https://example.org/bob> <https://example.org/ancestor> <https://example.org/carol> .
+  <https://example.org/alice> <https://example.org/ancestor> <https://example.org/carol> .
+}

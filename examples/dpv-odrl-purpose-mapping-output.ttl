@@ -1,0 +1,20 @@
+VERSION "1.2"
+
+<https://example.org/result/mapping/data_controller> <https://example.org/sourceRole> <https://example.org/role/data_controller> .
+<https://example.org/result/mapping/recipient> <https://example.org/sourceRole> <https://example.org/role/recipient> .
+<https://example.org/result/mapping/personal_data> <https://example.org/sourceRole> <https://example.org/role/personal_data> .
+<https://example.org/result/mapping/processing> <https://example.org/sourceRole> <https://example.org/role/processing> .
+<https://example.org/result/mapping/purpose> <https://example.org/sourceRole> <https://example.org/role/purpose> .
+<https://example.org/result/mapping/legal_basis> <https://example.org/sourceRole> <https://example.org/role/legal_basis> .
+<https://example.org/result/mapping/data_controller> <https://example.org/value> <https://example.org/hospital_a> .
+<https://example.org/result/mapping/recipient> <https://example.org/value> <https://example.org/research_partner> .
+<https://example.org/result/mapping/personal_data> <https://example.org/value> <https://example.org/lab_result> .
+<https://example.org/result/mapping/processing> <https://example.org/value> <https://w3id.org/dpv#Use> .
+<https://example.org/result/mapping/purpose> <https://example.org/value> <https://w3id.org/dpv#Healthcare> .
+<https://example.org/result/mapping/legal_basis> <https://example.org/value> <https://w3id.org/dpv#Consent> .
+<https://example.org/result/mapping/data_controller> <https://example.org/mappingTarget> <http://www.w3.org/ns/odrl/2/assigner> .
+<https://example.org/result/mapping/recipient> <https://example.org/mappingTarget> <http://www.w3.org/ns/odrl/2/assignee> .
+<https://example.org/result/mapping/personal_data> <https://example.org/mappingTarget> <http://www.w3.org/ns/odrl/2/target> .
+<https://example.org/result/mapping/processing> <https://example.org/mappingTarget> <http://www.w3.org/ns/odrl/2/action> .
+<https://example.org/result/mapping/purpose> <https://example.org/mappingTarget> <https://example.org/alpha_purpose_constraint> .
+<https://example.org/result/mapping/legal_basis> <https://example.org/mappingTarget> <https://example.org/alpha_basis_constraint> .
