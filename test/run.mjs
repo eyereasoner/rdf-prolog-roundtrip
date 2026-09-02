@@ -5,6 +5,7 @@ import {
   extractRdfFromProlog,
   serializeRdfFromProlog,
 } from '../src/index.mjs';
+import { parseClauses, parseGoalText, parseNumberTokenText } from '../src/prolog-parser.mjs';
 
 let passed = 0;
 function test(name, fn) {
@@ -82,6 +83,26 @@ await test('only rdf/4 facts are serialized and duplicates are removed', () => {
     rdf(iri('https://example/s'), iri('https://example/p'), iri('https://example/o'), default_graph).
   `;
   assert.equal(extractRdfFromProlog(source), '<https://example/s> <https://example/p> <https://example/o> .\n');
+});
+
+await test('vendored parser matches current EyeProlog integer separators', () => {
+  const clauses = parseClauses('decimal(1_ /* grouping */ 000). radix(0xCA_FE).', {
+    sourceMetadata: false,
+  });
+  assert.equal(clauses[0].head.args[0].name, '1000');
+  assert.equal(clauses[1].head.args[0].name, '51966');
+  assert.equal(parseNumberTokenText('1_000').name, '1000');
+  assert.throws(() => parseNumberTokenText('1_000', { isoStrict: true }));
+});
+
+await test('vendored parser matches current EyeProlog double-bar lists', () => {
+  const list = parseGoalText('p("ab"||Tail)').args[0];
+  assert.equal(list.name, '.');
+  assert.equal(list.args[0].name, 'a');
+  assert.equal(list.args[1].name, '.');
+  assert.equal(list.args[1].args[0].name, 'b');
+  assert.equal(list.args[1].args[1].name, 'Tail');
+  assert.throws(() => parseGoalText('p("ab"||Tail)', { isoStrict: true }));
 });
 
 await test('include-source keeps source facts separate', () => {

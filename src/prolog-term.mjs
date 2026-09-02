@@ -1,5 +1,8 @@
 // Minimal term model required by the extracted EyeProlog parser.
 // The RDF adapter only needs parsed term shape: type, name, args, and arity.
+export const ATOM = 'atom';
+export const COMPOUND = 'compound';
+
 export class Term {
   constructor(type, name, args = []) {
     this.type = type;

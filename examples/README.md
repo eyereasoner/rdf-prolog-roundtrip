@@ -43,8 +43,18 @@ Load the input and rules in an ISO-style Prolog engine and query:
 ?- result_rdf(S, P, O, G).
 ```
 
-Or run `write_results/0` to print the complete result as `rdf/4` facts. For
-example, using SWI-Prolog as the command-line host:
+Or run `write_results/0` to print the complete result as `rdf/4` facts. With
+EyeProlog 1.5.26 or newer, `--quiet` keeps the resolved command goal out of the
+materialized fact stream:
+
+```sh
+eyeprolog --quiet --goal write_results \
+  examples/odrl-dpv-fpv-trust-flow-input.pl \
+  examples/odrl-dpv-fpv-trust-flow-rules.pl \
+  > examples/odrl-dpv-fpv-trust-flow-output.pl
+```
+
+The same ISO-style rules can, for example, be materialized with SWI-Prolog:
 
 ```sh
 swipl -q \
@@ -54,8 +64,7 @@ swipl -q \
   > examples/odrl-dpv-fpv-trust-flow-output.pl
 ```
 
-The rules themselves use ISO-style Prolog; only the `swipl` command-line flags
-above are SWI-specific.
+Only the command-line flags are host-specific.
 
 Convert the Prolog result back to RDF:
 

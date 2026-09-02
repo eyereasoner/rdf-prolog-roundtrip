@@ -4,6 +4,10 @@ Standalone RDF 1.2 <-> ISO Prolog roundtripping toolkit. It converts RDF dataset
 to ordinary `rdf/4` Prolog facts and ground `rdf/4` facts back to RDF.
 The package contains no Prolog solver.
 
+Its vendored source parser is synchronized with EyeProlog's parser while using
+a minimal standalone term model. See [`EXTRACTION.md`](EXTRACTION.md) for the
+source revision and the intentionally small adaptation boundary.
+
 ## Install
 
 ```sh
@@ -69,6 +73,16 @@ write_results.
 `result_rdf/4` is the test query. `write_results/0` prints all its solutions as
 ground `rdf/4` facts, which is exactly the format accepted by `prolog-to-rdf`.
 See [`examples/README.md`](examples/README.md) for a concrete trust-flow run.
+
+With EyeProlog 1.5.26 or newer, materialize those facts without adding the
+resolved `write_results` goal to the output:
+
+```sh
+eyeprolog --quiet --goal write_results \
+  examples/odrl-dpv-fpv-trust-flow-input.pl \
+  examples/odrl-dpv-fpv-trust-flow-rules.pl \
+  > examples/odrl-dpv-fpv-trust-flow-output.pl
+```
 
 ## CLI
 
